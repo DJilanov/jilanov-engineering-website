@@ -322,6 +322,12 @@ body {
 	height: 240px;
 	display: inline-block;
   }
+  .dribble .shots li .title {
+	color: #848484;
+	font-family: Lato, sans-serif;
+	font-size: 18px;
+	padding-bottom: 10px;
+  }
   @media only screen and (max-width: 800px) {
 	.dribble .shots li {
 	  width: 100%;

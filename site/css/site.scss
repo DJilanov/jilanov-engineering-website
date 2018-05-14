@@ -350,7 +350,14 @@ nav ul,
 			width: 22%;
 			margin: 1%;
 			height: 240px;
-			display: inline-block;
+            display: inline-block;
+            
+            .title {
+                color: rgb(132, 132, 132);
+                font-family: Lato, sans-serif;
+                font-size: 18px;
+                padding-bottom: 10px;
+            }
 
 			@media only screen and (max-width: 800px) {
 				width: 100%;
