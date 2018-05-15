@@ -450,6 +450,7 @@ nav ul,
 			height: 240px;
 			display: inline-block;
 			text-align: center;
+			overflow: hidden;
 
 			.title {
 				color: rgb(132, 132, 132);
@@ -649,6 +650,10 @@ footer {
 	h1 {
 		max-width: 50%;
 		margin: auto auto;
+
+		@media only screen and (max-width: 800px) {
+			max-width: 90%;
+		}
 	}
 
 	.info-bar {
@@ -717,6 +722,10 @@ footer {
 		margin: auto auto;
 		margin-top: 50px;
 		color: hsl(0, 0%, 30%);
+
+		@media only screen and (max-width: 800px) {
+			max-width: 90%;
+		}
 	}
 }
 
@@ -814,6 +823,10 @@ footer {
 		border: 1px solid #888;
 		width: 80%; /* Could be more or less, depending on screen size */
 		height: 52%;
+		
+		@media only screen and (max-width: 800px) {
+			height: auto;
+		}
 
 		.content-body {
 			display: flex;
@@ -822,9 +835,20 @@ footer {
 				width: 49.5%;
 				display: inline-block;
 
+				&.left-side {
+					@media only screen and (max-width: 800px) {
+						display: none;
+					}
+				}
+
 				&.right-side {
 					margin-left: 3%;
 					width: 46.5%;
+
+					@media only screen and (max-width: 800px) {
+						margin-left: 0;
+						width: 100%;
+					}
 
 					h3, h4 {
 						margin-bottom: 0;
