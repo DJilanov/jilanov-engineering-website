@@ -148,45 +148,47 @@ a {
 
 .button,
 input[type=submit], button {
-    margin-top: 50px;
-    -moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
-    box-shadow:inset 0px 1px 0px 0px #fff6af;
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
-    background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
-    background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
-    background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
-    background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
-    background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
-    background-color:#ffec64;
-    -moz-border-radius:26px;
-    -webkit-border-radius:26px;
-    border-radius:26px;
-    border:1px solid #ffaa22;
-    display:inline-block;
-    cursor:pointer;
-    color:#333333;
-    font-family:Arial;
-    font-size:26px;
-    font-weight:bold;
-    padding:23px 58px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #ffee66;
-    &:hover {
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
-        background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
-        background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
-        background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
-        background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
-        background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
-        background-color:#ffab23;
-    }
-    &:active {
-        position:relative;
-        top:1px;
-    }
+	margin-top: 50px;
+	-moz-box-shadow: inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #fff6af;
+	box-shadow: inset 0px 1px 0px 0px #fff6af;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+	background: -moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background: -webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background: -o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background: -ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+	background-color: #ffec64;
+	-moz-border-radius: 26px;
+	-webkit-border-radius: 26px;
+	border-radius: 26px;
+	border: 1px solid #ffaa22;
+	display: inline-block;
+	cursor: pointer;
+	color: #333333;
+	font-family: Arial;
+	font-size: 26px;
+	font-weight: bold;
+	padding: 23px 58px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffee66;
+
+	&:hover {
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+		background: -moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+		background: -webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+		background: -o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+		background: -ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+		background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+		background-color: #ffab23;
+	}
+
+	&:active {
+		position: relative;
+		top: 1px;
+	}
 }
 
 nav ul,
@@ -348,38 +350,123 @@ nav ul,
 	.shots {
 		list-style: none;
 		padding: 0;
-        height: inherit;
-        cursor: pointer;
+		height: inherit;
+		cursor: pointer;
 
-        &.logo {
-            li {
-                height: 120px;
-            }
-        }
+		$bg: rgba(0, 0, 0, 0.8);
+
+		.bg,
+		.overlay {
+			text-align: center;
+		}
+
+		img,
+		.overlay {
+			transition: .3s all;
+			border-radius: 3px;
+		}
+
+		h3 {
+			padding: 10px;
+		}
+
+		.see-more {
+			border: 1px solid orange;
+			border-radius: 10px;
+			width: 80%;
+			display: block;
+			margin: auto;
+			height: 50px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.bg {
+			position: relative;
+
+			img {
+				width: 100%;
+				margin-bottom: -4px;
+			}
+
+			.overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background: $bg;
+				color: #fff;
+				opacity: 0;
+
+				h2 {
+					padding-top: 20%;
+					font-family: 'Droid Serif', serif;
+				}
+
+				p {
+					font-family: 'Julius Sans One', sans-serif;
+				}
+			}
+
+			&:hover {
+				.overlay {
+					opacity: 1;
+				}
+
+				img {
+					-webkit-filter: blur(2px);
+					filter: blur(2px);
+				}
+			}
+		}
+
+		@media screen and (max-width: 1148px) {
+			.bg {
+				max-width: 48%;
+				margin: 1%;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			.bg {
+				float: none;
+				max-width: 80%;
+				margin: 1% auto;
+			}
+		}
+
+		&.logo {
+			li {
+				height: 120px;
+			}
+		}
 
 		li {
 			width: 22%;
 			margin: 1%;
 			height: 240px;
-            display: inline-block;
-            text-align: center;
-            
-            .title {
-                color: rgb(132, 132, 132);
-                font-family: Lato, sans-serif;
-                font-size: 18px;
-                padding-bottom: 10px;
-            }
+			display: inline-block;
+			text-align: center;
+
+			.title {
+				color: rgb(132, 132, 132);
+				font-family: Lato, sans-serif;
+				font-size: 18px;
+				padding-bottom: 10px;
+			}
 
 			@media only screen and (max-width: 800px) {
 				width: 100%;
 			}
 
 			img {
-				max-width:100%;
-                max-height:100%;
-                vertical-align: middle;
-                text-align: center;
+				max-width: 100%;
+				max-height: 100%;
+				vertical-align: middle;
+				text-align: center;
 			}
 		}
 	}
@@ -451,14 +538,13 @@ nav ul,
 	position: relative;
 
 	.contact-me {
-
 		p {
 			width: 83.05085%;
 			float: left;
 			margin-right: 1.69492%;
 			display: inline;
 			padding-left: 8.3%;
-            padding-right: 8.4%;
+			padding-right: 8.4%;
 			text-align: center;
 			margin-bottom: 5%;
 		}
@@ -473,8 +559,8 @@ nav ul,
 		left: 0;
 		right: 0;
 		bottom: 0;
-        margin: auto;
-        padding-top: 50px;
+		margin: auto;
+		padding-top: 50px;
 
 		@media only screen and (max-width: 800px) {
 			width: 95%;
@@ -555,66 +641,68 @@ footer {
 .center {
 	text-align: center;
 }
+
 .dream {
-    padding-top: 50px;
-    padding-bottom: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 
 	h1 {
 		max-width: 50%;
-        margin: auto auto;
+		margin: auto auto;
 	}
-    .info-bar {
-        width: 80%;
-        margin: auto auto;
-        margin-top: 50px;
-        
-        @media only screen and (min-width: 800px) {
-            display: flex;
-            justify-content: center;
-            align-items: center; 
-        }
-    
-        .profile-pic {
-            display: inline-block;
-            width: 20%;
-            
-            @media only screen and (max-width: 800px) {
-                display: block;
-                width: 100%;
-                padding-bottom: 30px;
-            }
-    
-            img {
-                border-radius: 50%;
-                max-width: 100%;
-            }
-        }
-    
-        .quote {
-            display: inline-block;
-            margin-left: 9%;
-            width: 70%;
-            
-            @media only screen and (max-width: 800px) {
-                display: block;
-                margin-left: 0;
-                width: 100%;
-            }
-    
-            p {
-                border-left: 0px;
-                font-style: italic;
-                font-weight: 300;
-                font-size: 150%;
-                border-left: 4px solid #f8f8f8;
-                font-style: italic;
-                border-top: 0px;
-                border-bottom: 0px;
-                padding: 0em;
-                color: hsl(0,0%,30%);
-            }
-        }
-    }
+
+	.info-bar {
+		width: 80%;
+		margin: auto auto;
+		margin-top: 50px;
+
+		@media only screen and (min-width: 800px) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.profile-pic {
+			display: inline-block;
+			width: 20%;
+
+			@media only screen and (max-width: 800px) {
+				display: block;
+				width: 100%;
+				padding-bottom: 30px;
+			}
+
+			img {
+				border-radius: 50%;
+				max-width: 100%;
+			}
+		}
+
+		.quote {
+			display: inline-block;
+			margin-left: 9%;
+			width: 70%;
+
+			@media only screen and (max-width: 800px) {
+				display: block;
+				margin-left: 0;
+				width: 100%;
+			}
+
+			p {
+				border-left: 0px;
+				font-style: italic;
+				font-weight: 300;
+				font-size: 150%;
+				border-left: 4px solid #f8f8f8;
+				font-style: italic;
+				border-top: 0px;
+				border-bottom: 0px;
+				padding: 0em;
+				color: hsl(0, 0%, 30%);
+			}
+		}
+	}
 }
 
 .about,
@@ -623,64 +711,64 @@ footer {
 .work,
 .contact-me,
 .collaborated {
-    h1 {
-        font-family: 'Rokkitt', serif;
-        max-width: 50%;
-        margin: auto auto;
-        margin-top: 50px;
-        color: hsl(0,0%,30%);
-    }
+	h1 {
+		font-family: 'Rokkitt', serif;
+		max-width: 50%;
+		margin: auto auto;
+		margin-top: 50px;
+		color: hsl(0, 0%, 30%);
+	}
 }
 
 .count {
-    padding-top: 50px;
-    padding-bottom: 100px;
-    margin-bottom: -50px;
-    
-    .gray-background {
-        background-color: hsl(0, 0%, 97%);
-    }
+	padding-top: 50px;
+	padding-bottom: 100px;
+	margin-bottom: -50px;
 
-    .third {
-        margin-top: 50px;
-        display: inline-block;
-        width: 33%;
-        
-        @media only screen and (max-width: 800px) {
-            width: 100%;
-        }
+	.gray-background {
+		background-color: hsl(0, 0%, 97%);
+	}
 
-        .info {
-            color: rgb(132, 132, 132);
-            font-family: Lato, sans-serif;
-            font-size: 18px;
-        }
+	.third {
+		margin-top: 50px;
+		display: inline-block;
+		width: 33%;
 
-        .number {
-            font-family: Lato, sans-serif;
-            font-size:58.5px;
+		@media only screen and (max-width: 800px) {
+			width: 100%;
+		}
 
-            &.purple {
-                color: rgb(174, 127, 199);
-            }
+		.info {
+			color: rgb(132, 132, 132);
+			font-family: Lato, sans-serif;
+			font-size: 18px;
+		}
 
-            &.orange {
-                color: rgb(250, 188, 0);
-            }
-            
-            &.green {
-                color: rgb(134, 197, 64);
-            }
-        }
-    }
+		.number {
+			font-family: Lato, sans-serif;
+			font-size: 58.5px;
+
+			&.purple {
+				color: rgb(174, 127, 199);
+			}
+
+			&.orange {
+				color: rgb(250, 188, 0);
+			}
+
+			&.green {
+				color: rgb(134, 197, 64);
+			}
+		}
+	}
 }
 
 .work {
-    background-color: rgb(240, 245, 255);
-    
-    h1 {
-        padding-top: 50px;
-    }
+	background-color: rgb(240, 245, 255);
+
+	h1 {
+		padding-top: 50px;
+	}
 }
 
 .gray-background {
@@ -689,90 +777,94 @@ footer {
 
 .mail-text {
 	border-left: 0px;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 150%;
-    border-left: 4px solid #f8f8f8;
-    font-style: italic;
-    border-top: 0px;
-    border-bottom: 0px;
-    padding: 0em;
-    color: hsl(0,0%,30%);
+	font-style: italic;
+	font-weight: 300;
+	font-size: 150%;
+	border-left: 4px solid #f8f8f8;
+	font-style: italic;
+	border-top: 0px;
+	border-bottom: 0px;
+	padding: 0em;
+	color: hsl(0, 0%, 30%);
 }
 
 .contact-me {
-    padding-top: 100px;
-    padding-bottom: 100px;
+	padding-top: 100px;
+	padding-bottom: 100px;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
-    /* Modal Content/Box */
-    .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-        height: 52%;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 
-        .content-body {
-            display: flex;
+	/* Modal Content/Box */
+	.modal-content {
+		background-color: #fefefe;
+		margin: 10% auto; /* 15% from the top and centered */
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%; /* Could be more or less, depending on screen size */
+		height: 52%;
 
-            > div {
-                width: 49.5%;
-                display: inline-block;
+		.content-body {
+			display: flex;
 
-                &.right-side {
-                    margin-left: 3%;
+			> div {
+				width: 49.5%;
+				display: inline-block;
+
+				&.right-side {
+					margin-left: 3%;
 					width: 46.5%;
-					
+
 					h3, h4 {
 						margin-bottom: 0;
 					}
-                }
+				}
 
-                img {
-                    max-width: 100%;
-                }
+				img {
+					max-width: 100%;
+				}
 
-                ul {
-                    padding-left: 20px;
-                }
-            }
-        }
-    }
-    
-    /* The Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        margin-top: -15px;
-        
-        &:hover,
-        &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
+				ul {
+					padding-left: 20px;
+				}
+			}
+		}
+	}
+
+	/* The Close Button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+		margin-top: -15px;
+
+		&:hover,
+		&:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
 }
 
 .collaborated {
-    .dribble {
-        padding-bottom: 0;
-    }
+	.dribble {
+		padding-bottom: 0;
+	}
+}
+
+.center {
+	text-align: center;
 }

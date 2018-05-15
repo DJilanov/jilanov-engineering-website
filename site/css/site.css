@@ -322,6 +322,74 @@ body {
     height: inherit;
     cursor: pointer;
   }
+  .dribble .shots .bg,
+  .dribble .shots .overlay {
+    text-align: center;
+  }
+  .dribble .shots img,
+  .dribble .shots .overlay {
+    transition: .3s all;
+    border-radius: 3px;
+  }
+  .dribble .shots h3 {
+    padding: 10px;
+  }
+  .dribble .shots .see-more {
+    border: 1px solid orange;
+    border-radius: 10px;
+    width: 80%;
+    display: block;
+    margin: auto;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dribble .shots .bg {
+    position: relative;
+  }
+  .dribble .shots .bg img {
+    width: 100%;
+    margin-bottom: -4px;
+  }
+  .dribble .shots .bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    opacity: 0;
+  }
+  .dribble .shots .bg .overlay h2 {
+    padding-top: 20%;
+    font-family: 'Droid Serif', serif;
+  }
+  .dribble .shots .bg .overlay p {
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  .dribble .shots .bg:hover .overlay {
+    opacity: 1;
+  }
+  .dribble .shots .bg:hover img {
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+  }
+  @media screen and (max-width: 1148px) {
+    .dribble .shots .bg {
+      max-width: 48%;
+      margin: 1%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .dribble .shots .bg {
+      float: none;
+      max-width: 80%;
+      margin: 1% auto;
+    }
+  }
   .dribble .shots.logo li {
     height: 120px;
   }
@@ -709,7 +777,11 @@ body {
     cursor: pointer;
   }
   
-
-.collaborated .dribble {
-        padding-bottom: 0;
-    }
+  .collaborated .dribble {
+    padding-bottom: 0;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
