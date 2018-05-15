@@ -42,17 +42,21 @@ function checkCounter(finishData) {
   
 function redrawDotNav(){
 	var topNavHeight = 50,
-		nextPointMargin = 200;
+        nextPointMargin = 200;
+    var currentDot = null;
 	
-	$('#dotNav li a').removeClass('active').parent('li').removeClass('active');     
-	$('section').each(function(i,item){
+    $('#dotNav li a').removeClass('active').parent('li').removeClass('active');
+	$('section').each((i,item) => {
 	  var ele = $(item),
 		  docTop = $(document).scrollTop() + topNavHeight;
 	  if(ele.offset().top + ele.height() - nextPointMargin > docTop && ele.offset().top <= docTop + nextPointMargin) {
-		$('#dotNav li').eq(i).addClass('active');
+        $('#dotNav li').eq(i).addClass('active');
+        currentDot = i;
 	  }
-
-	});   
+    });   
+    if(currentDot === null) {
+        $('#dotNav li').eq($('#dotNav li').length - 1).addClass('active');
+    }
 }
 
 function initModal() {
