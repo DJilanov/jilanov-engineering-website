@@ -157,7 +157,7 @@ function initModal() {
         },
         softwaregroup: {
             image: './img/softwaregroup.png',
-            info: 'Improved their Framework ( Under Tree ) and was the main developers of AccessBank administration panel',
+            info: 'Improved their Framework ( Under Tree ) and we were the main developers of AccessBank administration panel',
             technologies: '<li>Web Front-end: React</li><li>Back-end: NodeJS</li>',
             role: 'We worked as contractors and assisted the main development team of the company'
         },
