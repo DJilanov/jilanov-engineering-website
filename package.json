@@ -1,0 +1,19 @@
+{
+  "name": "jilanov-engineering-website",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "grunt": "1.0.2",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "engines": {
+    "node": "8.9.1"
+  },
+  "dependencies": {
+    "grunt-sass": "^2.1.0",
+    "node-sass": "^4.9.0"
+  }
+}
