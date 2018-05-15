@@ -1,3 +1,6 @@
+// floating
+var floatingMenu={hasInner:"number"==typeof window.innerWidth,hasElement:"object"==typeof document.documentElement&&"number"==typeof document.documentElement.clientWidth},floatingArray=[];floatingMenu.add=function(e,t){var n,o;"string"==typeof e?n=e:o=e,void 0==t?floatingArray.push({id:n,menu:o,targetLeft:0,targetTop:0,distance:.07,snap:!0,updateParentHeight:!1}):floatingArray.push({id:n,menu:o,targetLeft:t.targetLeft,targetRight:t.targetRight,targetTop:t.targetTop,targetBottom:t.targetBottom,centerX:t.centerX,centerY:t.centerY,prohibitXMovement:t.prohibitXMovement,prohibitYMovement:t.prohibitYMovement,distance:void 0!=t.distance?t.distance:.07,snap:t.snap,ignoreParentDimensions:t.ignoreParentDimensions,updateParentHeight:void 0!=t.updateParentHeight&&t.updateParentHeight,scrollContainer:t.scrollContainer,scrollContainerId:t.scrollContainerId,confinementArea:t.confinementArea,confinementAreaId:void 0!=t.confinementArea&&"#"==t.confinementArea.substring(0,1)?t.confinementArea.substring(1):void 0,confinementAreaClassRegexp:void 0!=t.confinementArea&&"."==t.confinementArea.substring(0,1)?new RegExp("(^|\\s)"+t.confinementArea.substring(1)+"(\\s|$)"):void 0})},floatingMenu.findSingle=function(e){e.id&&(e.menu=document.getElementById(e.id)),e.scrollContainerId&&(e.scrollContainer=document.getElementById(e.scrollContainerId))},floatingMenu.move=function(e){e.prohibitXMovement||(e.menu.style.left=e.nextX+"px",e.menu.style.right=""),e.prohibitYMovement||(e.menu.style.top=e.nextY+"px",e.menu.style.bottom="")},floatingMenu.scrollLeft=function(e){if(e.scrollContainer)return e.scrollContainer.scrollLeft;var t=window.top;return this.hasInner?t.pageXOffset:this.hasElement?t.document.documentElement.scrollLeft:t.document.body.scrollLeft},floatingMenu.scrollTop=function(e){if(e.scrollContainer)return e.scrollContainer.scrollTop;var t=window.top;return this.hasInner?t.pageYOffset:this.hasElement?t.document.documentElement.scrollTop:t.document.body.scrollTop},floatingMenu.windowWidth=function(){return this.hasElement?document.documentElement.clientWidth:document.body.clientWidth},floatingMenu.windowHeight=function(){return floatingMenu.hasElement&&floatingMenu.hasInner?document.documentElement.clientHeight>window.innerHeight?window.innerHeight:document.documentElement.clientHeight:floatingMenu.hasElement?document.documentElement.clientHeight:document.body.clientHeight},floatingMenu.documentHeight=function(){var e=this.hasInner?window.innerHeight:0,t=document.body,n=document.documentElement;return Math.max(t.scrollHeight,t.offsetHeight,n.clientHeight,n.scrollHeight,n.offsetHeight,e)},floatingMenu.documentWidth=function(){var e=this.hasInner?window.innerWidth:0,t=document.body,n=document.documentElement;return Math.max(t.scrollWidth,t.offsetWidth,n.clientWidth,n.scrollWidth,n.offsetWidth,e)},floatingMenu.calculateCornerX=function(e){var t=e.menu.offsetWidth,n=this.scrollLeft(e)-e.parentLeft;return e.centerX?n+=(this.windowWidth()-t)/2:void 0==e.targetLeft?n+=this.windowWidth()-e.targetRight-t:n+=e.targetLeft,document.body!=e.menu.parentNode&&n+t>=e.confinedWidthReserve&&(n=e.confinedWidthReserve-t),n<0&&(n=0),n},floatingMenu.calculateCornerY=function(e){var t=e.menu.offsetHeight,n=this.scrollTop(e)-e.parentTop;return e.centerY?n+=(this.windowHeight()-t)/2:void 0===e.targetTop?n+=this.windowHeight()-e.targetBottom-t:n+=e.targetTop,document.body!=e.menu.parentNode&&n+t>=e.confinedHeightReserve&&(n=e.confinedHeightReserve-t),n<0&&(n=0),n},floatingMenu.isConfinementArea=function(e,t){return void 0!=e.confinementAreaId&&t.id==e.confinementAreaId||void 0!=e.confinementAreaClassRegexp&&t.className&&e.confinementAreaClassRegexp.test(t.className)},floatingMenu.computeParent=function(e){if(e.ignoreParentDimensions)return e.confinedHeightReserve=this.documentHeight(),e.confinedWidthReserver=this.documentWidth(),e.parentLeft=0,void(e.parentTop=0);var t=e.menu.parentNode,n=this.offsets(t,e);e.parentLeft=n.left,e.parentTop=n.top,e.confinedWidthReserve=t.clientWidth;var o=t,i=this.offsets(o,e);if(void 0==e.confinementArea)for(;o.clientHeight+i.top<e.menu.scrollHeight+n.top||e.menu.parentNode==o&&e.updateParentHeight&&o.clientHeight+i.top==e.menu.scrollHeight+n.top;)o=o.parentNode,i=this.offsets(o,e);else for(;void 0!=o.parentNode&&!this.isConfinementArea(e,o);)o=o.parentNode,i=this.offsets(o,e);e.confinedHeightReserve=o.clientHeight-(n.top-i.top)},floatingMenu.offsets=function(e,t){var n={left:0,top:0};if(e!==t.scrollContainer){for(;e.offsetParent&&e.offsetParent!=t.scrollContainer;)n.left+=e.offsetLeft,n.top+=e.offsetTop,e=e.offsetParent;if(window==window.top)return n;for(var o=window.top.document.body.getElementsByTagName("IFRAME"),i=0;i<o.length;i++)if(o[i].contentWindow==window)for(e=o[i];e.offsetParent;)n.left+=e.offsetLeft,n.top+=e.offsetTop,e=e.offsetParent;return n}},floatingMenu.doFloatSingle=function(e){this.findSingle(e),e.updateParentHeight&&(e.menu.parentNode.style.minHeight=e.menu.scrollHeight+"px");this.computeParent(e);var t=this.calculateCornerX(e),n=(t-e.nextX)*e.distance;(Math.abs(n)<.5&&e.snap||Math.abs(t-e.nextX)<=1)&&(n=t-e.nextX);var o=this.calculateCornerY(e),i=(o-e.nextY)*e.distance;(Math.abs(i)<.5&&e.snap||Math.abs(o-e.nextY)<=1)&&(i=o-e.nextY),(Math.abs(n)>0||Math.abs(i)>0)&&(e.nextX+=n,e.nextY+=i,this.move(e))},floatingMenu.fixTargets=function(){},floatingMenu.fixTarget=function(e){},floatingMenu.doFloat=function(){this.fixTargets();for(var e=0;e<floatingArray.length;e++)this.fixTarget(floatingArray[e]),this.doFloatSingle(floatingArray[e]);setTimeout("floatingMenu.doFloat()",20)},floatingMenu.insertEvent=function(e,t,n){if(void 0==e.addEventListener){var o="on"+t;if(void 0==e.attachEvent){var i=e[o];e[o]=function(e){e=e||window.event;var t=n(e);return void 0!=i&&1==i(e)&&1==t}}else e.attachEvent(o,n)}else e.addEventListener(t,n,!1)},floatingMenu.init=function(){floatingMenu.fixTargets();for(var e=0;e<floatingArray.length;e++)floatingMenu.initSingleMenu(floatingArray[e]);setTimeout("floatingMenu.doFloat()",100)},floatingMenu.initSingleMenu=function(e){this.findSingle(e),this.computeParent(e),this.fixTarget(e),e.nextX=this.calculateCornerX(e),e.nextY=this.calculateCornerY(e),this.move(e)},floatingMenu.insertEvent(window,"load",floatingMenu.init),"undefined"!=typeof jQuery&&(jQuery.fn.addFloating=function(e){return this.each(function(){floatingMenu.add(this,e)})});
+
 function checkCounter(finishData) {
     var oTop = $('.gray-background.count').offset().top - window.innerHeight;
     if (!finishData && $(window).scrollTop() > oTop) {
@@ -201,7 +204,7 @@ function initModal() {
 }
 
 function mailURL() {
-    var mailto_link = 'mailto:' + '?subject=Lets work together&body=' + escape('djilanov@gmail.com');
+    var mailto_link = 'mailto:djilanov@gmail.com?subject=Lets work together';
 
     if (getBrowser() == 'mozilla') {
         // Mozilla FireFox Mail To Friend
@@ -228,17 +231,32 @@ function mailURL() {
 
 function getBrowser() {
     var userAgent = navigator.userAgent.toLowerCase();
-    $.browser.chrome = /chrome/.test(userAgent);
-    $.browser.safari = /webkit/.test(userAgent);
-    $.browser.opera = /opera/.test(userAgent);
-    $.browser.msie = /msie/.test(userAgent) && !/opera/.test(userAgent);
-    $.browser.mozilla = /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent) || /firefox/.test(userAgent);
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
-    if ($.browser.chrome) return "chrome";
-    if ($.browser.mozilla) return "mozilla";
-    if ($.browser.opera) return "opera";
-    if ($.browser.safari) return "safari";
-    if ($.browser.msie) return "ie";
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+    // Chrome 1+
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+    // Blink engine detection
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    if (isChrome || isEdge || isBlink) return "chrome";
+    if (isFirefox) return "mozilla";
+    if (isOpera) return "opera";
+    if (isSafari) return "safari";
+    if (isIE) return "ie";
 
 }
 
