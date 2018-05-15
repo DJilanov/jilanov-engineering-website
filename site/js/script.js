@@ -1,45 +1,45 @@
 function checkCounter(finishData) {
-	var oTop = $('.gray-background.count').offset().top - window.innerHeight;
-	if (!finishData && $(window).scrollTop() > oTop) {
-		$('.gray-background.count .number').each(function () {
-			var $this = $(this),
-				countTo = $this.attr('data-count');
-			$({
-				countNum: $this.text()
-			}).animate({
-				countNum: countTo
-			}, {
-				duration: 2000,
-				easing: 'swing',
-				step: function () {
-					$this.text(Math.floor(this.countNum));
-				},
-				complete: function () {
-					$this.text(this.countNum);
-					//alert('finished');
-				}
+    var oTop = $('.gray-background.count').offset().top - window.innerHeight;
+    if (!finishData && $(window).scrollTop() > oTop) {
+        $('.gray-background.count .number').each(function () {
+            var $this = $(this),
+                countTo = $this.attr('data-count');
+            $({
+                countNum: $this.text()
+            }).animate({
+                countNum: countTo
+            }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function () {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function () {
+                        $this.text(this.countNum);
+                        //alert('finished');
+                    }
 
-			});
-		});
-		return true;
-	}
+                });
+        });
+        return true;
+    }
 }
-  
-function redrawDotNav(){
-	var topNavHeight = 50,
+
+function redrawDotNav() {
+    var topNavHeight = 50,
         nextPointMargin = 200;
     var currentDot = null;
-	
+
     $('#dotNav li a').removeClass('active').parent('li').removeClass('active');
-	$('section').each((i,item) => {
-	  var ele = $(item),
-		  docTop = $(document).scrollTop() + topNavHeight;
-	  if(ele.offset().top + ele.height() - nextPointMargin > docTop && ele.offset().top <= docTop + nextPointMargin) {
-        $('#dotNav li').eq(i).addClass('active');
-        currentDot = i;
-	  }
-    });   
-    if(currentDot === null) {
+    $('section').each((i, item) => {
+        var ele = $(item),
+            docTop = $(document).scrollTop() + topNavHeight;
+        if (ele.offset().top + ele.height() - nextPointMargin > docTop && ele.offset().top <= docTop + nextPointMargin) {
+            $('#dotNav li').eq(i).addClass('active');
+            currentDot = i;
+        }
+    });
+    if (currentDot === null) {
         $('#dotNav li').eq($('#dotNav li').length - 1).addClass('active');
     }
 }
@@ -163,69 +163,113 @@ function initModal() {
         },
     };
 
-	// Get the modal
-	let modal = $('#custom-modal');
+    // Get the modal
+    let modal = $('#custom-modal');
 
-	// Get the button that opens the modal
-	let shots = $(".shots li");
+    // Get the button that opens the modal
+    let shots = $(".shots li");
 
-	// Get the <span> element that closes the modal
-	let close = $("#custom-modal .close");
-	$(shots).click((event) => {
-		let elementId = event.currentTarget.dataset.id;
+    // Get the <span> element that closes the modal
+    let close = $("#custom-modal .close");
+    $(shots).click((event) => {
+        let elementId = event.currentTarget.dataset.id;
         let data = modalData[elementId];
-        if(!data) {
+        if (!data) {
             return;
         }
-		$('#custom-modal img').attr("src",data.image);
-		$('#custom-modal .right-side .info').html(data.info);
+        $('#custom-modal img').attr("src", data.image);
+        $('#custom-modal .right-side .info').html(data.info);
         $('#custom-modal .right-side .technologies').html(data.technologies);
-        if(!data.role) {
+        if (!data.role) {
             $('#custom-modal .right-side .role').hide();
         } else {
-		    $('#custom-modal .right-side .role').show();
+            $('#custom-modal .right-side .role').show();
         }
-		$('#custom-modal .right-side p.role').html(data.role);
-		modal.css('display', 'block');
-	});
-	
-	$(close).click(() => {
-		modal.css('display', 'none');
-	});
-	
-	$(window).click((event) => {
-		if (event.target.id == 'custom-modal') {
-			modal.css('display', 'none');
-		}
-	});
+        $('#custom-modal .right-side p.role').html(data.role);
+        modal.css('display', 'block');
+    });
+
+    $(close).click(() => {
+        modal.css('display', 'none');
+    });
+
+    $(window).click((event) => {
+        if (event.target.id == 'custom-modal') {
+            modal.css('display', 'none');
+        }
+    });
+}
+
+function mailURL() {
+    var mailto_link = 'mailto:' + '?subject=Lets work together&body=' + escape('djilanov@gmail.com');
+
+    if (getBrowser() == 'mozilla') {
+        // Mozilla FireFox Mail To Friend
+        // Opens a new tab but also opens up Microsoft Office window with URL
+        window.open(mailto_link, 'emailWindow');
+    }
+    else if (getBrowser() == 'ie') {
+        // IE Favourite
+        window.open(mailto_link, 'emailWindow');
+    }
+    else if (getBrowser() == 'opera') {
+        // Opera
+        return true;
+    }
+    else if (getBrowser() == 'safari') { // safari
+        window.location.href = mailto_link;
+        //alert('mail to safari');
+    }
+    else if (getBrowser() == 'chrome') {
+        window.location.href = mailto_link;
+        //alert('mail to chrome'); 
+    }
+}
+
+function getBrowser() {
+    var userAgent = navigator.userAgent.toLowerCase();
+    $.browser.chrome = /chrome/.test(userAgent);
+    $.browser.safari = /webkit/.test(userAgent);
+    $.browser.opera = /opera/.test(userAgent);
+    $.browser.msie = /msie/.test(userAgent) && !/opera/.test(userAgent);
+    $.browser.mozilla = /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent) || /firefox/.test(userAgent);
+
+    if ($.browser.chrome) return "chrome";
+    if ($.browser.mozilla) return "mozilla";
+    if ($.browser.opera) return "opera";
+    if ($.browser.safari) return "safari";
+    if ($.browser.msie) return "ie";
+
 }
 
 $(document).ready(function () {
-	var finishData = false;
-	$('#floatdiv').addFloating({
-		targetRight: 10,
-		targetTop: 10,
-		snap: true
-	});
+    var finishData = false;
+    $('#floatdiv').addFloating({
+        targetRight: 10,
+        targetTop: 10,
+        snap: true
+    });
 
-	$(window).scroll(function () {
-		if(checkCounter(finishData)) {
-			finishData = true;
-		}
-		redrawDotNav();
-	}); // window scroll
-	
-	$(function () {
-		var e;
-		return e = function () {}, $("[role=navigation] a, .teaser .button,#dotNav ul li").click(function () {
-			var e;
-			return e = $("body").find($(this).attr("href").split("/").pop()), $("html, body").animate({
-				scrollTop: e.offset().top
-			}, 750), !1
-		}), $(document).ready(function () {
-			return e()
-		})
-	});
+    $(window).scroll(function () {
+        if (checkCounter(finishData)) {
+            finishData = true;
+        }
+        redrawDotNav();
+    }); // window scroll
 
-	initModal();
+    $('.mail').click(() => mailURL());
+
+    $(function () {
+        var e;
+        return e = function () { }, $("[role=navigation] a, .teaser .button,#dotNav ul li").click(function () {
+            var e;
+            return e = $("body").find($(this).attr("href").split("/").pop()), $("html, body").animate({
+                scrollTop: e.offset().top
+            }, 750), !1
+        }), $(document).ready(function () {
+            return e()
+        })
+    });
+
+    initModal();
 });
