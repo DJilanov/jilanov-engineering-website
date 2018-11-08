@@ -316,6 +316,9 @@ button:not(.custom) {
                 font-size: 18px;
                 padding-bottom: 10px;
             }
+            @media only screen and (max-width: 1280px) {
+                width: 40%;
+            }
             @media only screen and (max-width: 800px) {
                 width: 100%;
             }

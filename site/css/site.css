@@ -466,6 +466,9 @@ button:not(.custom) {
         font-family: Lato, sans-serif;
         font-size: 18px;
         padding-bottom: 10px; }
+      @media only screen and (max-width: 1280px) {
+        .dribble .shots li {
+          width: 40%; } }
       @media only screen and (max-width: 800px) {
         .dribble .shots li {
           width: 100%; } }
