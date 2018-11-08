@@ -223,7 +223,14 @@ button:not(.custom) {
         $bg: rgba(0, 0, 0, 0.8);
         .bg,
         .overlay {
-            text-align: center;
+          text-align: center;
+
+          &.flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          }
         }
         img,
         .overlay {

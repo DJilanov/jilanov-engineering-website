@@ -396,6 +396,12 @@ button:not(.custom) {
     .dribble .shots .bg,
     .dribble .shots .overlay {
       text-align: center; }
+      .dribble .shots .bg.flex-container,
+      .dribble .shots .overlay.flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; }
     .dribble .shots img,
     .dribble .shots .overlay {
       transition: .3s all;
