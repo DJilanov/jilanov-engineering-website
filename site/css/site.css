@@ -726,7 +726,7 @@ footer .fa-circle {
           .modal .modal-content .content-body:not(.block) > div.right-side h4 {
             margin-bottom: 0; }
         .modal .modal-content .content-body:not(.block) > div img {
-          max-width: 100%;
+          width: 100%;
           position: relative;
           top: 50%;
           transform: translateY(-50%); }
