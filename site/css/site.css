@@ -704,18 +704,17 @@ footer .fa-circle {
     border: 1px solid #888;
     width: 80%;
     /* Could be more or less, depending on screen size */
-    height: 52%; }
-    @media only screen and (max-width: 800px) {
-      .modal .modal-content {
-        height: auto; } }
+    height: auto; }
     .modal .modal-content .content-body:not(.block) {
       display: flex; }
       .modal .modal-content .content-body:not(.block) > div {
         width: 49.5%;
         display: inline-block; }
-        @media only screen and (max-width: 800px) {
-          .modal .modal-content .content-body:not(.block) > div.left-side {
-            display: none; } }
+        .modal .modal-content .content-body:not(.block) > div.left-side {
+          transform-style: preserve-3d; }
+          @media only screen and (max-width: 800px) {
+            .modal .modal-content .content-body:not(.block) > div.left-side {
+              display: none; } }
         .modal .modal-content .content-body:not(.block) > div.right-side {
           margin-left: 3%;
           width: 46.5%; }
@@ -727,7 +726,10 @@ footer .fa-circle {
           .modal .modal-content .content-body:not(.block) > div.right-side h4 {
             margin-bottom: 0; }
         .modal .modal-content .content-body:not(.block) > div img {
-          max-width: 100%;}
+          max-width: 100%;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%); }
         .modal .modal-content .content-body:not(.block) > div ul {
           padding-left: 20px; }
   .modal .close {
